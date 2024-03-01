@@ -99,7 +99,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AbH-BT-Pv0"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IfN-JO-LGM" firstAttribute="trailing" secondItem="AbH-BT-Pv0" secondAttribute="trailing" id="0SU-Zd-Cwy"/>
                             <constraint firstItem="gdg-W8-Vp8" firstAttribute="top" secondItem="IfN-JO-LGM" secondAttribute="bottom" id="338-XA-UTR"/>
@@ -161,11 +161,11 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="text.justify.leading" catalog="system" width="128" height="99"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
