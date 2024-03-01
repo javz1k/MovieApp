@@ -28,6 +28,7 @@ extension MovieCollectionCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
         let cell = collectionView.dequeCell(cellClass: MovieCell.self, indexPath: indexPath)
+        cell.configureCell()
         return cell
     }
     

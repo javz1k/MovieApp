@@ -30,6 +30,8 @@
 		A4F55BC52B920B2300CFD4C8 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F55BC32B920B2300CFD4C8 /* MovieCell.swift */; };
 		A4F55BC62B920B2300CFD4C8 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F55BC42B920B2300CFD4C8 /* MovieCell.xib */; };
 		A4F55BC82B92224B00CFD4C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F55BC72B92224B00CFD4C8 /* Extensions.swift */; };
+		A4F55BCE2B9232A000CFD4C8 /* MovieCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F55BCC2B9232A000CFD4C8 /* MovieCollectionHeader.swift */; };
+		A4F55BCF2B9232A000CFD4C8 /* MovieCollectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F55BCD2B9232A000CFD4C8 /* MovieCollectionHeader.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		A4F55BC32B920B2300CFD4C8 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		A4F55BC42B920B2300CFD4C8 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		A4F55BC72B92224B00CFD4C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A4F55BCC2B9232A000CFD4C8 /* MovieCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionHeader.swift; sourceTree = "<group>"; };
+		A4F55BCD2B9232A000CFD4C8 /* MovieCollectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionHeader.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 		A4F55BBB2B90E7C500CFD4C8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A4F55BCB2B92328300CFD4C8 /* Headers */,
 				A4F55BC12B920AF100CFD4C8 /* MovieCollectionCelll */,
 				A4F55BC22B920B0A00CFD4C8 /* MovieCell */,
 			);
@@ -244,6 +249,23 @@
 				A4F55BC72B92224B00CFD4C8 /* Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A4F55BCB2B92328300CFD4C8 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A4F55BD02B9232A700CFD4C8 /* MovieCollectionHeader */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		A4F55BD02B9232A700CFD4C8 /* MovieCollectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				A4F55BCC2B9232A000CFD4C8 /* MovieCollectionHeader.swift */,
+				A4F55BCD2B9232A000CFD4C8 /* MovieCollectionHeader.xib */,
+			);
+			path = MovieCollectionHeader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4F55BBF2B90E7F600CFD4C8 /* MovieCollectionCell.xib in Resources */,
+				A4F55BCF2B9232A000CFD4C8 /* MovieCollectionHeader.xib in Resources */,
 				A4773A742B8F674900310F6D /* LaunchScreen.storyboard in Resources */,
 				A4773A712B8F674900310F6D /* Assets.xcassets in Resources */,
 				A4773A6F2B8F673F00310F6D /* Main.storyboard in Resources */,
@@ -333,6 +356,7 @@
 				A4773A882B8F735F00310F6D /* FavoriteViewController.swift in Sources */,
 				A4F55BBA2B90AB4A00CFD4C8 /* PopularMovieModel.swift in Sources */,
 				A4773A8F2B8F73A500310F6D /* MoreViewController.swift in Sources */,
+				A4F55BCE2B9232A000CFD4C8 /* MovieCollectionHeader.swift in Sources */,
 				A4773A6C2B8F673F00310F6D /* ViewController.swift in Sources */,
 				A4773A682B8F673F00310F6D /* AppDelegate.swift in Sources */,
 				A4773A8A2B8F736F00310F6D /* FavoriteViewModel.swift in Sources */,
