@@ -14,7 +14,8 @@ class MovieCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        movieCollectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier:"MovieCell")
+        movieCollectionView.registerNib(with: "MovieCell")
+//        movieCollectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier:"MovieCell")
     }
 
 }
@@ -25,7 +26,8 @@ extension MovieCollectionCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        let cell = collectionView.dequeCell(cellClass: MovieCell.self, indexPath: indexPath)
         return cell
     }
     

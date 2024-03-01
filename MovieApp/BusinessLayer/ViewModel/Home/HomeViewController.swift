@@ -19,7 +19,8 @@ class HomeViewController: UIViewController {
         configureHomeViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MovieCollectionCell")
+        collectionView.registerNib(with: "MovieCollectionCell")
+//        collectionView.register(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MovieCollectionCell")
     }
     
     
@@ -48,7 +49,8 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionCell", for: indexPath) as! MovieCollectionCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionCell", for: indexPath) as! MovieCollectionCell
+        let cell = collectionView.dequeCell(cellClass: MovieCollectionCell.self, indexPath: indexPath)
         return cell
     }
     
