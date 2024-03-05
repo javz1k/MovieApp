@@ -15,7 +15,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeViewModel.getPopularMovieList()
         configureHomeViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -46,6 +45,7 @@ class HomeViewController: UIViewController {
     }
     
     fileprivate func segmentAction(type: HeaderType, index: Int){
+        homeViewModel.getMovieForType(type: type, index: index)
         print(type, index)
     }
 
