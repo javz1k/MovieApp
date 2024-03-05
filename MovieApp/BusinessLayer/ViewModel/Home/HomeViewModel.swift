@@ -9,21 +9,25 @@ import Foundation
 
 final class HomeViewModel{
     private var popularList: PopularMovieModel?
+    private var topRatedList: TopRatedViewModel?
+    private var todayList: DayViewModel?
+    private var weekList: WeekViewModel?
+    
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
     
     func getMovieForType(type: HeaderType, index: Int){
         if type == .trending{
             if index == 0 {
-//                getTodayMovieList()
+                getTodayMovieList()
             }else{
-//                getThisWeekMovieList()
+                getTopRatedMovieList()
             }
         }else{
             if index == 0 {
                 getPopularMovieList()
             }else{
-//                getTopRatedMovieList()
+                getWeekMovieList()
             }
         }
     }
@@ -42,4 +46,47 @@ final class HomeViewModel{
             }
         }
     }
+    
+    func getTopRatedMovieList(){
+        MovieManager.shared.getTopRatedMovieList() { [weak self] responseData, errorString in
+            guard let self = self else {return}
+            if let errorString = errorString {
+                self.errorCallBack?(errorString)
+                print(errorString)
+            }else if let responseData = responseData{
+                self.topRatedList = responseData
+                self.successCallBack?()
+                print(responseData)
+            }
+        }
+    }
+    
+    func getTodayMovieList(){
+        MovieManager.shared.getTodayMovieList() { [weak self] responseData, errorString in
+            guard let self = self else {return}
+            if let errorString = errorString {
+                self.errorCallBack?(errorString)
+                print(errorString)
+            }else if let responseData = responseData{
+                self.todayList = responseData
+                self.successCallBack?()
+                print(responseData)
+            }
+        }
+    }
+    
+    func getWeekMovieList(){
+        MovieManager.shared.getWeekMovieList() { [weak self] responseData, errorString in
+            guard let self = self else {return}
+            if let errorString = errorString {
+                self.errorCallBack?(errorString)
+                print(errorString)
+            }else if let responseData = responseData{
+                self.weekList = responseData
+                self.successCallBack?()
+                print(responseData)
+            }
+        }
+    }
+    
 }

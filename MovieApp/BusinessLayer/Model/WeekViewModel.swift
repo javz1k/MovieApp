@@ -1,20 +1,19 @@
 //
-//  Day.swift
+//  Week.swift
 //  MovieApp
 //
-//  Created by Cavidan Mustafayev on 05.03.24.
-//
+//  Created by Cavidan Mustafayev on 06.03.24.
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let day = try? JSONDecoder().decode(Day.self, from: jsonData)
+//   let week = try? JSONDecoder().decode(Week.self, from: jsonData)
 
 import Foundation
 
-// MARK: - Day
-struct Day: Codable {
+// MARK: - Week
+struct WeekViewModel: Codable {
     let page: Int?
-    let results: [DayRes]?
+    let results: [WeekRes]?
     let totalPages, totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -25,13 +24,14 @@ struct Day: Codable {
 }
 
 // MARK: - Result
-struct DayRes: Codable {
+struct WeekRes: Codable {
     let adult: Bool?
     let backdropPath: String?
     let id: Int?
-    let title, originalLanguage, originalTitle, overview: String?
-    let posterPath: String?
-    let mediaType: MediaTyp?
+    let title: String?
+    let originalLanguage: OriginalLanguage?
+    let originalTitle, overview, posterPath: String?
+    let mediaType: MediaType?
     let genreIDS: [Int]?
     let popularity: Double?
     let releaseDate: String?
@@ -57,6 +57,13 @@ struct DayRes: Codable {
     }
 }
 
-enum MediaTyp: String, Codable {
+enum MediaType: String, Codable {
     case movie = "movie"
 }
+
+enum OriginalLanguage: String, Codable {
+    case en = "en"
+    case fr = "fr"
+    case zh = "zh"
+}
+

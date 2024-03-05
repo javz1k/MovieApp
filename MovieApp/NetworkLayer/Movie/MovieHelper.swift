@@ -8,8 +8,8 @@
 import Foundation
 enum MovieHelper: String {
     case popular = "/movie/popular?language=en-US&page="
-    case today = "/movie/week"
-    case week = "/movie/day"
+    case today = "trending/movie/day"
+    case week = "trending/movie/week"
     case topRated = "/movie/top_rated"
     
     var path: String {
