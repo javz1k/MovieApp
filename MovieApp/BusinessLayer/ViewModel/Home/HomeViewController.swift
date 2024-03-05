@@ -40,6 +40,14 @@ class HomeViewController: UIViewController {
             print("error")
         }
     }
+    
+    fileprivate func moreAction(type : HeaderType){
+        print("moreButton \(type)")
+    }
+    
+    fileprivate func segmentAction(type: HeaderType, index: Int){
+        print(type, index)
+    }
 
 }
 
@@ -71,9 +79,18 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             
         case UICollectionView.elementKindSectionHeader :
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieCollectionHeader", for: indexPath) as! MovieCollectionHeader
-            header.configureView(type: (indexPath.section == 0 ? .trending : .category))
-            return header
             
+            header.configureView(type: (indexPath.section == 0 ? .trending : .category))
+            header.moreCallBack = { [weak self] headerData in
+                guard let self = self else {return}
+                self.moreAction(type: headerData)
+            }
+            
+            header.segmentCallBack = { [weak self] headerData, index in
+                guard let self = self else {return}
+                self.segmentAction(type: headerData, index: index)
+            }
+            return header
         default:
             assert(false, "Unexpected element kind")
         }
