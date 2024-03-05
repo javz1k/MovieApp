@@ -70,7 +70,8 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         switch kind {
             
         case UICollectionView.elementKindSectionHeader :
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieCollectionHeader", for: indexPath)
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieCollectionHeader", for: indexPath) as! MovieCollectionHeader
+            header.configureView(type: (indexPath.section == 0 ? .trending : .category))
             return header
             
         default:

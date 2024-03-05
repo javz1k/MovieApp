@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionHeader" id="U6b-Vx-4bR">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionHeader" id="U6b-Vx-4bR" customClass="MovieCollectionHeader" customModule="MovieApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="496" height="157"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
@@ -30,6 +30,9 @@
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="See more"/>
+                                    <connections>
+                                        <action selector="seeMoreButton:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="DBq-Fr-mx8"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -43,6 +46,9 @@
                                 <segment title="This week"/>
                             </segments>
                             <color key="selectedSegmentTintColor" red="0.96470588450000005" green="0.78431367870000002" blue="0.30980393290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="headerSegmentAction:" destination="U6b-Vx-4bR" eventType="valueChanged" id="Ikw-aJ-ENI"/>
+                            </connections>
                         </segmentedControl>
                     </subviews>
                 </stackView>
@@ -54,6 +60,10 @@
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="I9L-My-2FC" secondAttribute="bottom" constant="16" id="kQh-1Z-cAe"/>
                 <constraint firstItem="I9L-My-2FC" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="16" id="t1o-uR-qFd"/>
             </constraints>
+            <connections>
+                <outlet property="headerSegment" destination="jcZ-eM-8Dx" id="p8F-eF-I0h"/>
+                <outlet property="label" destination="vfu-2p-3Sz" id="NBf-UN-SBg"/>
+            </connections>
             <point key="canvasLocation" x="261.06870229007632" y="57.394366197183103"/>
         </collectionReusableView>
     </objects>
