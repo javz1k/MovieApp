@@ -26,8 +26,8 @@ class MovieManager {
         }
     }
     
-    func getTopRatedMovieList(complete: @escaping((TopRatedViewModel?, String?) -> Void)) {
-        let url = "\(MovieHelper.topRated.path)"
+    func getTopRatedMovieList(pageID: Int,complete: @escaping((TopRatedViewModel?, String?) -> Void)) {
+        let url = "\(MovieHelper.topRated.path)\(pageID)"
         NetworkManager.shared.request(
             type: TopRatedViewModel.self,
             url: url,
@@ -42,8 +42,8 @@ class MovieManager {
         }
     }
     
-    func getTodayMovieList(complete: @escaping((DayViewModel?, String?) -> Void)) {
-        let url = "\(MovieHelper.today.path)"
+    func getTodayMovieList(pageID: Int,complete: @escaping((DayViewModel?, String?) -> Void)) {
+        let url = "\(MovieHelper.today.path)\(pageID)"
         NetworkManager.shared.request(
             type: DayViewModel.self,
             url: url,
@@ -58,8 +58,8 @@ class MovieManager {
         }
     }
     
-    func getWeekMovieList(complete: @escaping((WeekViewModel?, String?) -> Void)) {
-        let url = "\(MovieHelper.week.path)"
+    func getWeekMovieList(pageID: Int,complete: @escaping((WeekViewModel?, String?) -> Void)) {
+        let url = "\(MovieHelper.week.path)\(pageID)"
         NetworkManager.shared.request(
             type: WeekViewModel.self,
             url: url,

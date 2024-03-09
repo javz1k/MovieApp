@@ -31,7 +31,7 @@ struct DayRes: Codable {
     let id: Int?
     let title, originalLanguage, originalTitle, overview: String?
     let posterPath: String?
-    let mediaType: MediaTyp?
+    let mediaType: String?
     let genreIDS: [Int]?
     let popularity: Double?
     let releaseDate: String?
@@ -55,8 +55,4 @@ struct DayRes: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-}
-
-enum MediaTyp: String, Codable {
-    case movie = "movie"
 }

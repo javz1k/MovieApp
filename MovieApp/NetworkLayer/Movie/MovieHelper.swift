@@ -8,9 +8,9 @@
 import Foundation
 enum MovieHelper: String {
     case popular = "/movie/popular?language=en-US&page="
-    case today = "trending/movie/day"
-    case week = "trending/movie/week"
-    case topRated = "/movie/top_rated"
+    case today = "trending/movie/day?language=en-US&page="
+    case week = "trending/movie/week?language=en-US&page="
+    case topRated = "/movie/top_rated?language=en-US&page="
     
     var path: String {
         return NetworkHelper.shared.requestURL(url: self.rawValue)

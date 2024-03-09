@@ -48,7 +48,7 @@ final class HomeViewModel{
     }
     
     func getTopRatedMovieList(){
-        MovieManager.shared.getTopRatedMovieList() { [weak self] responseData, errorString in
+        MovieManager.shared.getTopRatedMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
@@ -62,7 +62,7 @@ final class HomeViewModel{
     }
     
     func getTodayMovieList(){
-        MovieManager.shared.getTodayMovieList() { [weak self] responseData, errorString in
+        MovieManager.shared.getTodayMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
@@ -76,7 +76,7 @@ final class HomeViewModel{
     }
     
     func getWeekMovieList(){
-        MovieManager.shared.getWeekMovieList() { [weak self] responseData, errorString in
+        MovieManager.shared.getWeekMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)

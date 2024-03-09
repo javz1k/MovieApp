@@ -29,9 +29,9 @@ struct WeekRes: Codable {
     let backdropPath: String?
     let id: Int?
     let title: String?
-    let originalLanguage: OriginalLanguage?
+    let originalLanguage: String?
     let originalTitle, overview, posterPath: String?
-    let mediaType: MediaType?
+    let mediaType: String?
     let genreIDS: [Int]?
     let popularity: Double?
     let releaseDate: String?
@@ -55,15 +55,5 @@ struct WeekRes: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-}
-
-enum MediaType: String, Codable {
-    case movie = "movie"
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case fr = "fr"
-    case zh = "zh"
 }
 
