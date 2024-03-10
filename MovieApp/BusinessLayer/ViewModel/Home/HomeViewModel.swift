@@ -74,12 +74,10 @@ final class HomeViewModel{
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
-//                print(errorString)
             }else if let responseData = responseData{
                 self.popularModel = responseData
                 self.movieList = popularModel?.results ?? []
-                self.successCallBack?()
-//                print(responseData)
+                self.successCallBack?()           
             }
         }
     }
