@@ -44,6 +44,8 @@
                             <segments>
                                 <segment title="Today"/>
                                 <segment title="This week"/>
+                                <segment title="Popular"/>
+                                <segment title="Top Rated"/>
                             </segments>
                             <color key="selectedSegmentTintColor" red="0.96470588450000005" green="0.78431367870000002" blue="0.30980393290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>

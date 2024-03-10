@@ -8,81 +8,121 @@
 import Foundation
 
 final class HomeViewModel{
-    private var popularList: PopularMovieModel?
-    private var topRatedList: TopRatedViewModel?
-    private var todayList: DayViewModel?
-    private var weekList: WeekViewModel?
-    
+    private var popularModel: PopularMovieModel?
+    private var topRatedModel: TopRatedViewModel?
+    private var todayModel: DayViewModel?
+    private var weekModel: WeekViewModel?
+    var movieList:[MovieCellProtocol] = []
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
     
-    func getMovieForType(type: HeaderType, index: Int){
-        if type == .trending{
-            if index == 0 {
-                getTodayMovieList()
-            }else{
-                getTopRatedMovieList()
-            }
-        }else{
-            if index == 0 {
-                getPopularMovieList()
-            }else{
-                getWeekMovieList()
-            }
+    func getMovieForType(type: SegmentType){
+        switch type{
+        case .Popular :
+            getPopularMovieList()
+        case .ThisWeek :
+            getWeekMovieList()
+        case .Today :
+            getTodayMovieList()
+        case .TopRated :
+            getTopRatedMovieList()
         }
     }
     
-    // MARK: network
-    func getPopularMovieList(){
+    func getMovieList() -> [MovieCellProtocol] {
+        return movieList
+    }
+    
+    func getPopularMovieList() {
+        if let list = popularModel?.results, !list.isEmpty {
+            movieList = list
+            successCallBack?()
+        } else {
+            getPopularMovieListRequest()
+        }
+    }
+    
+    func getWeekMovieList() {
+        guard let list = weekModel?.results, !list.isEmpty else {
+            getWeekMovieListRequest()
+            return
+        }
+        movieList = list
+        successCallBack?()
+        
+    }
+    func getTodayMovieList() {
+        if let list = todayModel?.results, !list.isEmpty {
+            movieList = list
+            successCallBack?()
+        } else {
+            getTodayMovieListRequest()
+        }
+    }
+    func getTopRatedMovieList() {
+        if let list = topRatedModel?.results, !list.isEmpty {
+            movieList = list
+            successCallBack?()
+        } else {
+            getTopRatedMovieListRequest()
+        }
+    }
+    
+    // MARK: Network
+    fileprivate func getPopularMovieListRequest(){
         MovieManager.shared.getPopularMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
-                print(errorString)
+//                print(errorString)
             }else if let responseData = responseData{
-                self.popularList = responseData
+                self.popularModel = responseData
+                self.movieList = popularModel?.results ?? []
                 self.successCallBack?()
-                print(responseData)
+//                print(responseData)
             }
         }
     }
     
-    func getTopRatedMovieList(){
+    fileprivate func getTopRatedMovieListRequest(){
         MovieManager.shared.getTopRatedMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
                 print(errorString)
             }else if let responseData = responseData{
-                self.topRatedList = responseData
+                self.topRatedModel = responseData
+                self.movieList = topRatedModel?.results ?? []
                 self.successCallBack?()
                 print(responseData)
             }
         }
     }
     
-    func getTodayMovieList(){
+    fileprivate func getTodayMovieListRequest(){
         MovieManager.shared.getTodayMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
                 print(errorString)
             }else if let responseData = responseData{
-                self.todayList = responseData
+                self.todayModel = responseData
+                self.movieList = todayModel?.results ?? []
                 self.successCallBack?()
                 print(responseData)
             }
         }
     }
     
-    func getWeekMovieList(){
+    fileprivate func getWeekMovieListRequest(){
         MovieManager.shared.getWeekMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
                 print(errorString)
             }else if let responseData = responseData{
-                self.weekList = responseData
+                self.weekModel = responseData
+                self.movieList = weekModel?.results ?? []
                 self.successCallBack?()
                 print(responseData)
             }

@@ -21,9 +21,7 @@ class HomeViewController: UIViewController {
         collectionView.registerNib(with: "MovieCollectionCell")
         
         collectionView.register(UINib(nibName: "MovieCollectionHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:"MovieCollectionHeader")
-        
-//        collectionView.register(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MovieCollectionCell")
-    }
+        }
     
     
     
@@ -31,37 +29,39 @@ class HomeViewController: UIViewController {
         
         homeViewModel.successCallBack = { [weak self] in
             guard let self = self else {return}
+            self.reloadCollectionView()
             print("success")
         }
         
         homeViewModel.errorCallBack = { [weak self] error in
-            guard let self = self else {return}
+            guard self != nil else {return}
             print("error")
         }
     }
     
-    fileprivate func moreAction(type : HeaderType){
-        print("moreButton \(type)")
+    fileprivate func reloadCollectionView(){
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
-    fileprivate func segmentAction(type: HeaderType, index: Int){
-        homeViewModel.getMovieForType(type: type, index: index)
-        print(type, index)
+    
+    fileprivate func segmentAction(type: SegmentType){
+        homeViewModel.getMovieForType(type: type)
+        print(type)
     }
 
 }
 
 extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionCell", for: indexPath) as! MovieCollectionCell
         let cell = collectionView.dequeCell(cellClass: MovieCollectionCell.self, indexPath: indexPath)
+        cell.setList(list: homeViewModel.getMovieList())
         return cell
     }
     
@@ -79,16 +79,10 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             
         case UICollectionView.elementKindSectionHeader :
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieCollectionHeader", for: indexPath) as! MovieCollectionHeader
-            
-            header.configureView(type: (indexPath.section == 0 ? .trending : .category))
-            header.moreCallBack = { [weak self] headerData in
+            header.configureView()
+            header.segmentCallBack = { [weak self] SegmentType in
                 guard let self = self else {return}
-                self.moreAction(type: headerData)
-            }
-            
-            header.segmentCallBack = { [weak self] headerData, index in
-                guard let self = self else {return}
-                self.segmentAction(type: headerData, index: index)
+                self.segmentAction(type: SegmentType)
             }
             return header
         default:

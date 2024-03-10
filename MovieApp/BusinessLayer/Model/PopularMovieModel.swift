@@ -3,11 +3,6 @@
 //  MovieApp
 //
 //  Created by Cavidan Mustafayev on 29.02.24.
-//
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let popular = try? JSONDecoder().decode(Popular.self, from: jsonData)
 
 import Foundation
 
@@ -25,7 +20,19 @@ struct PopularMovieModel: Codable {
 }
 
 // MARK: - MovieResult
-struct MovieResult: Codable {
+struct MovieResult: Codable, MovieCellProtocol {
+    var titleString: String {
+        originalTitle ?? "title error"
+    }
+    
+    var subTitleString: String {
+        releaseDate ?? "release date error"
+    }
+    
+    var iconString: String {
+        ""
+    }
+    
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?

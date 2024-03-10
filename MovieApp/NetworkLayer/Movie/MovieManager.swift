@@ -5,6 +5,11 @@
 //  Created by Fagan Aslanli on 30.01.24.
 //
 
+private var popularList: [MovieResult]?
+private var topRatedList: [TopRatedResult]?
+private var todayList: [DayRes]?
+private var weekList: [WeekRes]?
+
 import Foundation
 
 class MovieManager {

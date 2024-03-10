@@ -10,25 +10,29 @@ import UIKit
 class MovieCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var movieCollectionView:UICollectionView!
-
+    private var list: [MovieCellProtocol]?
+    
+    func setList(list: [MovieCellProtocol]) {
+        self.list = list
+        movieCollectionView.reloadData()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         movieCollectionView.registerNib(with: "MovieCell")
-//        movieCollectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier:"MovieCell")
     }
 
 }
 
 extension MovieCollectionCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return list?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
         let cell = collectionView.dequeCell(cellClass: MovieCell.self, indexPath: indexPath)
-        cell.configureCell()
+        guard let model = list?[indexPath.row] else {return UICollectionViewCell()}
+        cell.configureCell(model: model)
         return cell
     }
     
