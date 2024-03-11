@@ -34,7 +34,7 @@ struct WeekRes: Codable, MovieCellProtocol {
     }
     
     var iconString: String {
-        ""
+        "https://image.tmdb.org/t/p/w260_and_h390_bestv2/\(posterPath ?? "")"
     }
     
     let adult: Bool?

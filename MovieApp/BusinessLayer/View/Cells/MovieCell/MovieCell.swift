@@ -31,6 +31,7 @@ class MovieCell: UICollectionViewCell {
     func configureCell(model: MovieCellProtocol){
         title.text = model.titleString
         subtitle.text = model.subTitleString
+        image.loadURL(model.iconString)
     }
 
 }
