@@ -32,8 +32,23 @@ class MovieCell: UICollectionViewCell {
    
     func configureCell(model: MovieCellProtocol){
         title.text = model.titleString
-        subtitle.text = model.subTitleString
         image.loadURL(model.iconString)
+        
+        let dateString = model.subTitleString
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "dd-MM-yyyy"
+            
+            let formattedDate = outputFormatter.string(from: date)
+            subtitle.text = formattedDate
+            print(formattedDate)
+        } else {
+            print("Invalid date format")
+        }
+
     }
 
 }
