@@ -25,23 +25,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="146" height="175"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="crs-wx-922">
-                        <rect key="frame" x="4" y="4" width="138" height="167"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="crs-wx-922">
+                        <rect key="frame" x="13" y="6" width="120" height="149"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HarleyMallboro" translatesAutoresizingMaskIntoConstraints="NO" id="6jr-yY-KdC">
-                                <rect key="frame" x="0.0" y="0.0" width="138" height="123"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="fKT-kj-tXT"/>
+                                    <constraint firstAttribute="width" constant="120" id="n6V-Qe-vb1"/>
+                                </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wVx-tN-vmR">
-                                <rect key="frame" x="0.0" y="131" width="138" height="36"/>
+                                <rect key="frame" x="0.0" y="113" width="120" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0C-af-Q7h">
-                                        <rect key="frame" x="0.0" y="0.0" width="138" height="17.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="17.333333333333332"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8k4-1C-ASR">
-                                        <rect key="frame" x="0.0" y="21.333333333333343" width="138" height="14.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="21.333333333333343" width="120" height="14.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -54,13 +58,6 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <constraints>
-                <constraint firstItem="crs-wx-922" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="D87-4C-xjk"/>
-                <constraint firstItem="crs-wx-922" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="gft-l3-lhW"/>
-                <constraint firstItem="6jr-yY-KdC" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.702857" id="rPs-VD-qKc"/>
-                <constraint firstAttribute="trailing" secondItem="crs-wx-922" secondAttribute="trailing" constant="4" id="s1b-pN-aNv"/>
-                <constraint firstAttribute="bottom" secondItem="crs-wx-922" secondAttribute="bottom" constant="4" id="zKE-uQ-bFE"/>
-            </constraints>
             <size key="customSize" width="146" height="175"/>
             <connections>
                 <outlet property="image" destination="6jr-yY-KdC" id="v02-CN-ly6"/>
