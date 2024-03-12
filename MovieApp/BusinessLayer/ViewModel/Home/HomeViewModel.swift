@@ -33,6 +33,10 @@ final class HomeViewModel{
         return movieList
     }
     
+    func getMovieCount() -> Int {
+        return movieList.count
+    }
+    
     func getPopularMovieList() {
         if let list = popularModel?.results, !list.isEmpty {
             movieList = list

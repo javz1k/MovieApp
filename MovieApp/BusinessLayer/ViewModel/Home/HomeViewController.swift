@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         configureHomeViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.registerNib(with: "MovieCollectionCell")
+        collectionView.registerNib(with: "MovieCell")
         
         collectionView.register(UINib(nibName: "MovieCollectionHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:"MovieCollectionHeader")
         }
@@ -56,12 +56,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return homeViewModel.getMovieCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeCell(cellClass: MovieCollectionCell.self, indexPath: indexPath)
-        cell.setList(list: homeViewModel.getMovieList())
+        let cell = collectionView.dequeCell(cellClass: MovieCell.self, indexPath: indexPath)
+        let model = homeViewModel.getMovieList()[indexPath.row]
+        cell.configureCell(model: model)
         return cell
     }
     
@@ -70,7 +71,8 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height * 0.28)
+        return CGSize(width: collectionView.frame.width/3, height: collectionView.frame.height * 0.28)
+
     }
     
     

@@ -48,8 +48,6 @@
 		A4773A9B2B8F7D6400310F6D /* MovieHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4773A972B8F7D6400310F6D /* MovieHelper.swift */; };
 		A4773A9C2B8F7D6400310F6D /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4773A982B8F7D6400310F6D /* MovieManager.swift */; };
 		A4F55BBA2B90AB4A00CFD4C8 /* PopularMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F55BB92B90AB4A00CFD4C8 /* PopularMovieModel.swift */; };
-		A4F55BBE2B90E7F600CFD4C8 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F55BBC2B90E7F600CFD4C8 /* MovieCollectionCell.swift */; };
-		A4F55BBF2B90E7F600CFD4C8 /* MovieCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F55BBD2B90E7F600CFD4C8 /* MovieCollectionCell.xib */; };
 		A4F55BC52B920B2300CFD4C8 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F55BC32B920B2300CFD4C8 /* MovieCell.swift */; };
 		A4F55BC62B920B2300CFD4C8 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F55BC42B920B2300CFD4C8 /* MovieCell.xib */; };
 		A4F55BC82B92224B00CFD4C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F55BC72B92224B00CFD4C8 /* Extensions.swift */; };
@@ -99,8 +97,6 @@
 		A4773A972B8F7D6400310F6D /* MovieHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieHelper.swift; sourceTree = "<group>"; };
 		A4773A982B8F7D6400310F6D /* MovieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		A4F55BB92B90AB4A00CFD4C8 /* PopularMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieModel.swift; sourceTree = "<group>"; };
-		A4F55BBC2B90E7F600CFD4C8 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
-		A4F55BBD2B90E7F600CFD4C8 /* MovieCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionCell.xib; sourceTree = "<group>"; };
 		A4F55BC32B920B2300CFD4C8 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		A4F55BC42B920B2300CFD4C8 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		A4F55BC72B92224B00CFD4C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -276,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				A4F55BCB2B92328300CFD4C8 /* Headers */,
-				A4F55BC12B920AF100CFD4C8 /* MovieCollectionCelll */,
 				A4F55BC22B920B0A00CFD4C8 /* MovieCell */,
 			);
 			path = Cells;
@@ -288,15 +283,6 @@
 				A4773A6D2B8F673F00310F6D /* Main.storyboard */,
 			);
 			path = Stroryboards;
-			sourceTree = "<group>";
-		};
-		A4F55BC12B920AF100CFD4C8 /* MovieCollectionCelll */ = {
-			isa = PBXGroup;
-			children = (
-				A4F55BBC2B90E7F600CFD4C8 /* MovieCollectionCell.swift */,
-				A4F55BBD2B90E7F600CFD4C8 /* MovieCollectionCell.xib */,
-			);
-			path = MovieCollectionCelll;
 			sourceTree = "<group>";
 		};
 		A4F55BC22B920B0A00CFD4C8 /* MovieCell */ = {
@@ -413,7 +399,6 @@
 				A4124A202B9CA799008FEF06 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				A4124A272B9CA799008FEF06 /* Montserrat-Italic.ttf in Resources */,
 				A4124A212B9CA799008FEF06 /* Montserrat-Black.ttf in Resources */,
-				A4F55BBF2B90E7F600CFD4C8 /* MovieCollectionCell.xib in Resources */,
 				A4124A262B9CA799008FEF06 /* Montserrat-Bold.ttf in Resources */,
 				A4124A2A2B9CA799008FEF06 /* Montserrat-Regular.ttf in Resources */,
 				A4124A2C2B9CA799008FEF06 /* Montserrat-ThinItalic.ttf in Resources */,
@@ -442,7 +427,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4F55BBE2B90E7F600CFD4C8 /* MovieCollectionCell.swift in Sources */,
 				A4F55BC82B92224B00CFD4C8 /* Extensions.swift in Sources */,
 				A42978B12B97B534008E2A57 /* WeekViewModel.swift in Sources */,
 				A4F55BC52B920B2300CFD4C8 /* MovieCell.swift in Sources */,

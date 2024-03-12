@@ -24,6 +24,8 @@ class MovieCell: UICollectionViewCell {
         // Initialization code
     }
     
+    
+    
     func setUpView(){
         image.layer.cornerRadius = 8
     }
