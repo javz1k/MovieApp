@@ -12,6 +12,7 @@ final class HomeViewModel{
     private var topRatedModel: TopRatedViewModel?
     private var todayModel: DayViewModel?
     private var weekModel: WeekViewModel?
+    private var searchModel: SearchViewModel?
     var movieList:[MovieCellProtocol] = []
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
@@ -130,5 +131,22 @@ final class HomeViewModel{
             }
         }
     }
+    
+    fileprivate func getSearchMovieListRequest(){
+        SearchManager.shared.getSearchMovieList(pageID: 1) { [weak self] responseData, errorString in
+            guard let self = self else {return}
+            if let errorString = errorString {
+                self.errorCallBack?(errorString)
+                print(errorString)
+            }else if let responseData = responseData{
+                self.searchModel = responseData
+                self.movieList = searchModel?.results ?? []
+                self.successCallBack?()
+                print(responseData)
+            }
+        }
+    }
+
+    
     
 }
