@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum movieHelper: String {
+enum searchHelper: String {
     case movieSearch = "search/movie?query=dune&include_adult=false&language=en-US&page="
     
     var path: String {

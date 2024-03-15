@@ -10,10 +10,10 @@ import Foundation
 class SearchManager {
     static let shared = SearchManager()
     
-    func getPopularMovieList(pageID: Int, complete: @escaping((PopularMovieModel?, String?) -> Void)) {
-        let url = "\(MovieHelper.popular.path)\(pageID)"
+    func getPopularMovieList(pageID: Int, complete: @escaping((SearchViewModel?, String?) -> Void)) {
+        let url = "\(searchHelper.movieSearch.path)\(pageID)"
         NetworkManager.shared.request(
-            type: PopularMovieModel.self,
+            type: SearchViewModel.self,
             url: url,
             header: NetworkHelper.shared.header,
             method: .get) { response in
