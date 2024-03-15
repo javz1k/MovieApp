@@ -73,6 +73,16 @@ final class HomeViewModel{
         }
     }
     
+    func getSearchMovieList(){
+        if let list = searchModel?.results, !list.isEmpty {
+            movieList = list
+            successCallBack?()
+        } else {
+            getSearchMovieListRequest()
+        }
+
+    }
+    
     // MARK: Network
     fileprivate func getPopularMovieListRequest(){
         MovieManager.shared.getPopularMovieList(pageID: 3) { [weak self] responseData, errorString in

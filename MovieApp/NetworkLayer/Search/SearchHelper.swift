@@ -13,3 +13,5 @@ enum searchHelper: String {
         return NetworkHelper.shared.requestURL(url: self.rawValue)
     }
 }
+
+
