@@ -94,7 +94,7 @@
                                         </connections>
                                     </button>
                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQ0-tv-ntm">
-                                        <rect key="frame" x="63" y="74" width="268" height="36"/>
+                                        <rect key="frame" x="28" y="74" width="303" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="t9F-eJ-Tnj"/>
                                         </constraints>
@@ -104,10 +104,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="fIT-C5-B89" firstAttribute="leading" secondItem="qQ0-tv-ntm" secondAttribute="trailing" constant="4" id="3IN-I3-j2r"/>
                                     <constraint firstAttribute="bottom" secondItem="tzr-Um-gbh" secondAttribute="bottom" constant="8" id="6og-wW-gX9"/>
-                                    <constraint firstItem="fIT-C5-B89" firstAttribute="leading" secondItem="qQ0-tv-ntm" secondAttribute="trailing" constant="4" id="HsV-ym-YuK"/>
                                     <constraint firstItem="fIT-C5-B89" firstAttribute="top" secondItem="IfN-JO-LGM" secondAttribute="top" constant="76" id="Kms-hc-gqD"/>
-                                    <constraint firstItem="qQ0-tv-ntm" firstAttribute="leading" secondItem="tzr-Um-gbh" secondAttribute="trailing" constant="4" id="Qcx-Yz-VsF"/>
+                                    <constraint firstItem="qQ0-tv-ntm" firstAttribute="leading" secondItem="IfN-JO-LGM" secondAttribute="leading" constant="28" id="M6f-w7-wcg"/>
                                     <constraint firstAttribute="bottom" secondItem="fIT-C5-B89" secondAttribute="bottom" constant="8" id="R0W-cJ-kUR"/>
                                     <constraint firstAttribute="trailing" secondItem="fIT-C5-B89" secondAttribute="trailing" constant="8" id="cdo-Do-bbL"/>
                                     <constraint firstItem="tzr-Um-gbh" firstAttribute="leading" secondItem="IfN-JO-LGM" secondAttribute="leading" constant="8" id="v6I-yV-YHN"/>

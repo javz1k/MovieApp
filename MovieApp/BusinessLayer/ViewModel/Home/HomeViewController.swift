@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITextFieldDelegate {
+class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var indicator:UIActivityIndicatorView!
     @IBOutlet weak var searchButton:UIButton!
@@ -39,8 +39,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func searchButtonAction(_ sender: Any) {
         print(#function)
         searchBarIsHidden = !searchBarIsHidden
-        sortButton.isHidden = !searchBarIsHidden
-        searchTextField.isHidden = searchBarIsHidden
+        UIView.transition(with: searchTextField,
+                          duration: 0.8,
+                          options: .transitionFlipFromBottom) {
+            self.sortButton.isHidden = !self.searchBarIsHidden
+            self.searchTextField.isHidden = self.searchBarIsHidden
+        }
     }
     
     @IBAction func sortButtonAction(_ sender: Any) {
@@ -114,4 +118,11 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     
+}
+
+extension HomeViewController:UITextFieldDelegate{
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        print(#function, text)
+    }
 }
