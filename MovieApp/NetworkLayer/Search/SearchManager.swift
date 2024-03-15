@@ -6,6 +6,7 @@
 //
 
 import Foundation
+private var searchList:[SearchViewModel]?
 
 class SearchManager {
     static let shared = SearchManager()
