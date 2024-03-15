@@ -7,23 +7,45 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var collectionView:UICollectionView!
-    
+    @IBOutlet weak var indicator:UIActivityIndicatorView!
+    @IBOutlet weak var searchButton:UIButton!
+    @IBOutlet weak var sortButton:UIButton!
+    @IBOutlet weak var searchTextField:UITextField!
     
     private var homeViewModel = HomeViewModel()
+    fileprivate var searchBarIsHidden: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
+        searchTextField.delegate = self
         collectionView.registerNib(with: "MovieCell")
         
         collectionView.register(UINib(nibName: "MovieCollectionHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:"MovieCollectionHeader")
         }
     
+    private var showLoading: Bool = false {
+        didSet {
+            DispatchQueue.main.async{
+                self.showLoading ? self.indicator.startAnimating() : self.indicator.stopAnimating()
+            }
+        }
+    }
     
+    @IBAction func searchButtonAction(_ sender: Any) {
+        print(#function)
+        searchBarIsHidden = !searchBarIsHidden
+        sortButton.isHidden = !searchBarIsHidden
+        searchTextField.isHidden = searchBarIsHidden
+    }
+    
+    @IBAction func sortButtonAction(_ sender: Any) {
+        print(#function)
+    }
     
     fileprivate func configureHomeViewModel(){
         

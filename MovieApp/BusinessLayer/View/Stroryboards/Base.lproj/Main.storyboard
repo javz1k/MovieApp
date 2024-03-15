@@ -78,6 +78,9 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                        <connections>
+                                            <action selector="searchButtonAction:" destination="8nh-1f-UP9" eventType="touchUpInside" id="Sfj-hS-iDN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzr-Um-gbh">
                                         <rect key="frame" x="8" y="76" width="51" height="35"/>
@@ -86,23 +89,46 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="text.justify.leading" catalog="system"/>
+                                        <connections>
+                                            <action selector="sortButtonAction:" destination="8nh-1f-UP9" eventType="touchUpInside" id="jtk-m7-rsw"/>
+                                        </connections>
                                     </button>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQ0-tv-ntm">
+                                        <rect key="frame" x="63" y="74" width="268" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="t9F-eJ-Tnj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="tzr-Um-gbh" secondAttribute="bottom" constant="8" id="6og-wW-gX9"/>
+                                    <constraint firstItem="fIT-C5-B89" firstAttribute="leading" secondItem="qQ0-tv-ntm" secondAttribute="trailing" constant="4" id="HsV-ym-YuK"/>
                                     <constraint firstItem="fIT-C5-B89" firstAttribute="top" secondItem="IfN-JO-LGM" secondAttribute="top" constant="76" id="Kms-hc-gqD"/>
+                                    <constraint firstItem="qQ0-tv-ntm" firstAttribute="leading" secondItem="tzr-Um-gbh" secondAttribute="trailing" constant="4" id="Qcx-Yz-VsF"/>
                                     <constraint firstAttribute="bottom" secondItem="fIT-C5-B89" secondAttribute="bottom" constant="8" id="R0W-cJ-kUR"/>
                                     <constraint firstAttribute="trailing" secondItem="fIT-C5-B89" secondAttribute="trailing" constant="8" id="cdo-Do-bbL"/>
                                     <constraint firstItem="tzr-Um-gbh" firstAttribute="leading" secondItem="IfN-JO-LGM" secondAttribute="leading" constant="8" id="v6I-yV-YHN"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="yMo-9v-6G8">
+                                <rect key="frame" x="176.66666666666666" y="406" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="IlZ-Dc-25D"/>
+                                    <constraint firstAttribute="height" constant="40" id="cqv-Lm-xa2"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AbH-BT-Pv0"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IfN-JO-LGM" firstAttribute="trailing" secondItem="AbH-BT-Pv0" secondAttribute="trailing" id="0SU-Zd-Cwy"/>
                             <constraint firstItem="gdg-W8-Vp8" firstAttribute="top" secondItem="IfN-JO-LGM" secondAttribute="bottom" id="338-XA-UTR"/>
+                            <constraint firstItem="yMo-9v-6G8" firstAttribute="centerX" secondItem="REZ-og-f6W" secondAttribute="centerX" id="9CI-u3-DGc"/>
+                            <constraint firstItem="yMo-9v-6G8" firstAttribute="centerY" secondItem="REZ-og-f6W" secondAttribute="centerY" id="PPO-Rm-uQN"/>
+                            <constraint firstItem="gdg-W8-Vp8" firstAttribute="top" secondItem="qQ0-tv-ntm" secondAttribute="bottom" constant="9" id="PVh-8f-X3l"/>
                             <constraint firstItem="IfN-JO-LGM" firstAttribute="top" secondItem="REZ-og-f6W" secondAttribute="top" id="UX5-ID-7Ur"/>
                             <constraint firstItem="IfN-JO-LGM" firstAttribute="leading" secondItem="AbH-BT-Pv0" secondAttribute="leading" id="XzG-9Q-PmJ"/>
                             <constraint firstItem="AbH-BT-Pv0" firstAttribute="bottom" secondItem="gdg-W8-Vp8" secondAttribute="bottom" id="eTb-lZ-DC1"/>
@@ -113,6 +139,10 @@
                     <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" id="t2Y-Pw-B2w"/>
                     <connections>
                         <outlet property="collectionView" destination="gdg-W8-Vp8" id="cdK-ZE-6bn"/>
+                        <outlet property="indicator" destination="yMo-9v-6G8" id="eeg-GB-C3l"/>
+                        <outlet property="searchButton" destination="fIT-C5-B89" id="KQu-Py-kOi"/>
+                        <outlet property="searchTextField" destination="qQ0-tv-ntm" id="4g3-Uz-bTx"/>
+                        <outlet property="sortButton" destination="tzr-Um-gbh" id="GUQ-dF-KSV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3l-GC-Ukw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
