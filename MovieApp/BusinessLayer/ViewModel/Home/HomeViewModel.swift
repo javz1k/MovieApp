@@ -143,7 +143,7 @@ final class HomeViewModel{
     }
     
     fileprivate func getSearchMovieListRequest(){
-        SearchManager.shared.getSearchMovieList(pageID: 1) { [weak self] responseData, errorString in
+        SearchManager.shared.getSearchMovieList(movieName: "mask") { [weak self] responseData, errorString in
             guard let self = self else {return}
             if let errorString = errorString {
                 self.errorCallBack?(errorString)

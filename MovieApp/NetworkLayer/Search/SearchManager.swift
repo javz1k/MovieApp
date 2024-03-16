@@ -11,8 +11,8 @@ private var searchList:[SearchViewModel]?
 class SearchManager {
     static let shared = SearchManager()
     
-    func getSearchMovieList(pageID: Int, complete: @escaping((SearchViewModel?, String?) -> Void)) {
-        let url = "\(searchHelper.movieSearch.path)\(pageID)"
+    func getSearchMovieList(movieName: String, complete: @escaping((SearchViewModel?, String?) -> Void)) {
+        let url = "\(searchHelper.movieSearch.path)\(movieName)"
         NetworkManager.shared.request(
             type: SearchViewModel.self,
             url: url,
