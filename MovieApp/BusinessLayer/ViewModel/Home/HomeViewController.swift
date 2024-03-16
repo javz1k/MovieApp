@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     
     private var homeViewModel = HomeViewModel()
     fileprivate var searchBarIsHidden: Bool = true
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,8 +125,11 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
 extension HomeViewController:UITextFieldDelegate{
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
+        homeViewModel.searchMovieNameCallBack?(text)
         homeViewModel.getSearchMovieList()
-        print(homeViewModel.movieList)
         print(#function, text)
     }
+    
 }
+
+

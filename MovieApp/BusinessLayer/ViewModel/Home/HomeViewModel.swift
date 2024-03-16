@@ -16,6 +16,7 @@ final class HomeViewModel{
     var movieList:[MovieCellProtocol] = []
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
+    var searchMovieNameCallBack:((String)->Void)?
     
     func getMovieForType(type: SegmentType){
         switch type{
@@ -143,18 +144,23 @@ final class HomeViewModel{
     }
     
     fileprivate func getSearchMovieListRequest(){
-        SearchManager.shared.getSearchMovieList(movieName: "mask") { [weak self] responseData, errorString in
+        searchMovieNameCallBack = { [weak self] name in
             guard let self = self else {return}
-            if let errorString = errorString {
-                self.errorCallBack?(errorString)
-                print(errorString)
-            }else if let responseData = responseData{
-                self.searchModel = responseData
-                self.movieList = searchModel?.results ?? []
-                self.successCallBack?()
-                print(responseData)
+        
+            SearchManager.shared.getSearchMovieList(movieName: name) { [weak self] responseData, errorString in
+                guard let self = self else {return}
+                if let errorString = errorString {
+                    self.errorCallBack?(errorString)
+                    print(errorString)
+                }else if let responseData = responseData{
+                    self.searchModel = responseData
+                    self.movieList = searchModel?.results ?? []
+                    self.successCallBack?()
+                    print(responseData)
+                }
             }
         }
+       
     }
 
     
