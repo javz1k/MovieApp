@@ -17,6 +17,7 @@ final class HomeViewModel{
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
     var searchMovieNameCallBack:((String)->Void)?
+    var selectedMovieIndexCallBack:((Int)->Void)?
     
     func getMovieForType(type: SegmentType){
         switch type{
@@ -29,6 +30,14 @@ final class HomeViewModel{
         case .TopRated :
             getTopRatedMovieList()
         }
+    }
+    
+    func openSelectedMovie(){
+        selectedMovieIndexCallBack = { [weak self] iCallBack in
+            guard let self = self else {return}
+            print(movieList[iCallBack].iconString, movieList[iCallBack].subTitleString, movieList[iCallBack].titleString, movieList[iCallBack].aboutString)
+        }
+        
     }
     
     func getMovieList() -> [MovieCellProtocol] {

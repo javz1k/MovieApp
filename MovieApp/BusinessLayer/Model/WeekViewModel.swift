@@ -25,6 +25,10 @@ struct WeekViewModel: Codable {
 
 // MARK: - Result
 struct WeekRes: Codable, MovieCellProtocol {
+    var aboutString: String{
+        overview ?? "Overview error"
+    }
+    
     var titleString: String {
         originalTitle ?? "title error"
     }

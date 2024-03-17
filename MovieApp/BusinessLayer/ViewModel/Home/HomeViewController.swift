@@ -126,6 +126,12 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         return CGSize(width: collectionView.frame.width/3.2 , height: collectionView.frame.height * 0.25)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        homeViewModel.selectedMovieIndexCallBack?(indexPath.row)
+        homeViewModel.openSelectedMovie()
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {

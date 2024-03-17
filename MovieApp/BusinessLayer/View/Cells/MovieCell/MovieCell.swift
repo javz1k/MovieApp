@@ -11,6 +11,7 @@ protocol MovieCellProtocol{
     var titleString:String {get}
     var subTitleString:String {get}
     var iconString:String {get}
+    var aboutString:String{get}
 }
 
 class MovieCell: UICollectionViewCell {

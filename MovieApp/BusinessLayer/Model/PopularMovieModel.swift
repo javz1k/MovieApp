@@ -21,6 +21,10 @@ struct PopularMovieModel: Codable {
 
 // MARK: - MovieResult
 struct MovieResult: Codable, MovieCellProtocol {
+    var aboutString: String{
+        overview ?? "Overview error"
+    }
+    
     var titleString: String {
         originalTitle ?? "title error"
     }

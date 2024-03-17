@@ -23,6 +23,10 @@ struct SearchViewModel: Codable {
 
 // MARK: - Result
 struct SearchResult: Codable, MovieCellProtocol {
+    var aboutString: String{
+        overview ?? "Overview error"
+    }
+    
     var titleString: String{
         originalTitle ?? "title error"
     }
