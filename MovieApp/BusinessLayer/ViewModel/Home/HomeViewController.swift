@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchButton:UIButton!
     @IBOutlet weak var sortButton:UIButton!
     @IBOutlet weak var searchTextField:UITextField!
+    @IBOutlet weak var xmarkButton:UIButton!
     
     private var homeViewModel = HomeViewModel()
     fileprivate var searchBarIsHidden: Bool = true
@@ -42,15 +43,32 @@ class HomeViewController: UIViewController {
         print(#function)
         searchBarIsHidden = !searchBarIsHidden
         UIView.transition(with: searchTextField,
-                          duration: 0.8,
+                          duration: 0.5,
                           options: .transitionFlipFromBottom) {
             self.sortButton.isHidden = !self.searchBarIsHidden
             self.searchTextField.isHidden = self.searchBarIsHidden
+            self.xmarkButton.isHidden = self.searchBarIsHidden
+            self.searchButton.isHidden = !self.searchBarIsHidden
         }
+        
+        
     }
     
     @IBAction func sortButtonAction(_ sender: Any) {
         print(#function)
+        
+    }
+    
+    @IBAction func xmarkButtonAction(_ sender: Any) {
+        print(#function)
+        UIView.transition(with: searchTextField,
+                          duration: 0.5,
+                          options: .transitionFlipFromBottom) {
+            self.sortButton.isHidden = false
+            self.searchTextField.isHidden = true
+            self.xmarkButton.isHidden = true
+            self.searchButton.isHidden = false
+        }
     }
     
     fileprivate func configureHomeViewModel(){
@@ -58,12 +76,10 @@ class HomeViewController: UIViewController {
         homeViewModel.successCallBack = { [weak self] in
             guard let self = self else {return}
             self.reloadCollectionView()
-            print("success")
         }
         
         homeViewModel.errorCallBack = { [weak self] error in
             guard self != nil else {return}
-            print("error")
         }
     }
     
@@ -73,10 +89,18 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
     fileprivate func segmentAction(type: SegmentType){
         homeViewModel.getMovieForType(type: type)
-        print(type)
+        //hiding search bar
+        UIView.transition(with: searchTextField,
+                          duration: 0.8,
+                          options: .transitionFlipFromBottom) {
+            self.sortButton.isHidden = false
+            self.searchTextField.isHidden = true
+            self.xmarkButton.isHidden = true
+            self.searchButton.isHidden = false
+        }
+        print("segmentaction",type)
     }
 
 }
