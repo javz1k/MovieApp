@@ -6,8 +6,7 @@
 //
 
 import UIKit
-
-class SelectedMovieViewController: UIViewController {
+class CardDetailController: UIViewController {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var aboutTextView: UITextView!
@@ -15,20 +14,25 @@ class SelectedMovieViewController: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieNameLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var movie: MovieCellProtocol?
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    func configureView(data:MovieCellProtocol?){
-        guard let data = data else {return}
-        print("CONFIGURE //////////////",data)
-        movieNameLabel.text = data.titleString
-        posterImageView.loadURL(data.iconString)
-        aboutTextView.text = data.aboutString
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+    }
+    
+    func configureView(){
+        guard let movie = movie else {return}
+        print("CONFIGURE //////////////",movie)
+        movieNameLabel.text = movie.titleString
+        posterImageView.loadURL(movie.iconString)
+        aboutTextView.text = movie.aboutString
         
-        let dateString = data.subTitleString
+        let dateString = movie.subTitleString
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd"
 

@@ -17,7 +17,6 @@ final class HomeViewModel{
     var movieList:[MovieCellProtocol] = []
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
-    var searchMovieNameCallBack:((String)->Void)?
     var selectedMovieIndexCallBack:((Int)->Void)?
     
     func getMovieForType(type: SegmentType){
@@ -32,24 +31,6 @@ final class HomeViewModel{
             getTopRatedMovieList()
         }
     }
-    
-    
-//    func openSelectedMovie(at index: Int, completion: @escaping ([String]) -> Void) {
-//        var title: String = ""
-//        var subTitle: String = ""
-//        var about: String = ""
-//        var iconPath: String = ""
-//        
-//        selectedMovieIndexCallBack = { [weak self] iCallBack in
-//            guard let self = self else { return }
-//            title = movieList[iCallBack].titleString
-//            subTitle = movieList[iCallBack].subTitleString
-//            about = movieList[iCallBack].aboutString
-//            iconPath = movieList[iCallBack].iconString
-//            
-//            completion([title, subTitle, about, iconPath])
-//        }
-//    }
     
     
     func getMovieList() -> [MovieCellProtocol] {
@@ -95,16 +76,6 @@ final class HomeViewModel{
         }
     }
     
-    func getSearchMovieList(){
-        if let list = searchModel?.results, !list.isEmpty {
-            movieList = list
-            successCallBack?()
-        } else {
-            getSearchMovieListRequest()
-        }
-
-    }
-    
     // MARK: Network
     fileprivate func getPopularMovieListRequest(){
         MovieManager.shared.getPopularMovieList(pageID: 3) { [weak self] responseData, errorString in
@@ -114,7 +85,7 @@ final class HomeViewModel{
             }else if let responseData = responseData{
                 self.popularModel = responseData
                 self.movieList = popularModel?.results ?? []
-                self.successCallBack?()           
+                self.successCallBack?()
             }
         }
     }
@@ -164,26 +135,20 @@ final class HomeViewModel{
         }
     }
     
-    fileprivate func getSearchMovieListRequest(){
-        searchMovieNameCallBack = { [weak self] name in
-            guard let self = self else {return}
+    func getSearchMovieListRequest(text: String){
         
-            SearchManager.shared.getSearchMovieList(movieName: name) { [weak self] responseData, errorString in
-                guard let self = self else {return}
-                if let errorString = errorString {
-                    self.errorCallBack?(errorString)
-                    print(errorString)
-                }else if let responseData = responseData{
-                    self.searchModel = responseData
-                    self.movieList = searchModel?.results ?? []
-                    self.successCallBack?()
-                    print(responseData)
-                }
+        SearchManager.shared.getSearchMovieList(movieName: text) { [weak self] responseData, errorString in
+            guard let self = self else {return}
+            if let errorString = errorString {
+                self.errorCallBack?(errorString)
+                print(errorString)
+            }else if let responseData = responseData{
+                self.searchModel = responseData
+                self.movieList = searchModel?.results ?? []
+                self.successCallBack?()
+                print(responseData)
             }
         }
-       
     }
-
-    
     
 }

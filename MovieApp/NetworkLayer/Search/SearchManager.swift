@@ -26,4 +26,8 @@ class SearchManager {
             }
         }
     }
+    
+    func cancelRequest() {
+        NetworkManager.shared.cancelTaskWithUrl()
+    }
 }

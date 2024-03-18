@@ -35,8 +35,9 @@ class NetworkManager {
             print("header: \(header)")
             
             let dataTask = session.dataTask(with: request) { [weak self] data, response, error in
-                let statusCode = (response as! HTTPURLResponse).statusCode
-                print("responseCode: \(statusCode)")
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                
+                print("responseCode: \(statusCode ?? 0)")
                 if statusCode == 401 {
                     completion(.failure(.authError))
                     return
@@ -58,6 +59,13 @@ class NetworkManager {
                 dataTask.resume()
             }
         }
+    
+    func cancelTaskWithUrl() {
+        let session = URLSession.shared
+        session.getAllTasks { tasks in
+            tasks.forEach({$0.cancel()})
+        }
+      }
     
     fileprivate func handleResponse<T: Codable>(
         data: Data,

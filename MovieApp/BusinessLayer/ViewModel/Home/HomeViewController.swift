@@ -18,7 +18,10 @@ class HomeViewController: UIViewController {
     private var homeViewModel = HomeViewModel()
     fileprivate var searchBarIsHidden: Bool = true
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +106,12 @@ class HomeViewController: UIViewController {
         print("segmentaction",type)
     }
 
+    fileprivate func showDetailController(model: MovieCellProtocol) {
+        let controller = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectedMovieViewController") as! CardDetailController
+        controller.movie = model
+        navigationController?.pushViewController(controller, animated: true)
+                
+    }
 }
 
 extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -127,24 +136,12 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-
-        
-        let selectedVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectedMovieViewController") as? SelectedMovieViewController
-        let model = self.homeViewModel.getMovieList()[indexPath.row]
-        print(model)
-        selectedVC?.configureView(data:model)
-        self.navigationController?.pushViewController(selectedVC!, animated: true)
-        
-//        homeViewModel.selectedMovieIndexCallBack?(indexPath.row)
-//        homeViewModel.openSelectedMovie(at: indexPath.row) { movieData in
-//            print(movieData)
-//            let selectedVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectedMovieViewController") as? SelectedMovieViewController
-//            let model = self.homeViewModel.getMovieList()[indexPath.row]
-//            selectedVC?.configureView(data:model)
-//            self.navigationController?.pushViewController(selectedVC!, animated: true)           
-//        }
-        
+        let movie = homeViewModel.movieList[indexPath.row]
+        if homeViewModel.movieList.indices.contains(indexPath.row) {
+            showDetailController(model: movie)
+        } else {
+            print("Out of range")
+        }
     }
     
     
@@ -170,11 +167,7 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
 extension HomeViewController:UITextFieldDelegate{
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
-        homeViewModel.searchMovieNameCallBack?(text)
-        homeViewModel.getSearchMovieList()
-        print(#function, text)
+        SearchManager.shared.cancelRequest()
+        homeViewModel.getSearchMovieListRequest(text: text)
     }
-    
 }
-
-
