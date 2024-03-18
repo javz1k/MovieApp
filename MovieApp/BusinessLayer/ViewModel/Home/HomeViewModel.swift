@@ -34,22 +34,22 @@ final class HomeViewModel{
     }
     
     
-    func openSelectedMovie(at index: Int, completion: @escaping ([String]) -> Void) {
-        var title: String = ""
-        var subTitle: String = ""
-        var about: String = ""
-        var iconPath: String = ""
-        
-        selectedMovieIndexCallBack = { [weak self] iCallBack in
-            guard let self = self else { return }
-            title = movieList[iCallBack].titleString
-            subTitle = movieList[iCallBack].subTitleString
-            about = movieList[iCallBack].aboutString
-            iconPath = movieList[iCallBack].iconString
-            
-            completion([title, subTitle, about, iconPath])
-        }
-    }
+//    func openSelectedMovie(at index: Int, completion: @escaping ([String]) -> Void) {
+//        var title: String = ""
+//        var subTitle: String = ""
+//        var about: String = ""
+//        var iconPath: String = ""
+//        
+//        selectedMovieIndexCallBack = { [weak self] iCallBack in
+//            guard let self = self else { return }
+//            title = movieList[iCallBack].titleString
+//            subTitle = movieList[iCallBack].subTitleString
+//            about = movieList[iCallBack].aboutString
+//            iconPath = movieList[iCallBack].iconString
+//            
+//            completion([title, subTitle, about, iconPath])
+//        }
+//    }
     
     
     func getMovieList() -> [MovieCellProtocol] {

@@ -21,6 +21,28 @@ class SelectedMovieViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func configureView(data:MovieCellProtocol?){
+        guard let data = data else {return}
+        print("CONFIGURE //////////////",data)
+        movieNameLabel.text = data.titleString
+        posterImageView.loadURL(data.iconString)
+        aboutTextView.text = data.aboutString
+        
+        let dateString = data.subTitleString
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "dd-MM-yyyy"
+            
+            let formattedDate = outputFormatter.string(from: date)
+            releaseDateLabel.text = formattedDate
+        } else {
+            print("Invalid date format")
+        }
+    }
+    
 
    
 

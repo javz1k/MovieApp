@@ -128,15 +128,22 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        homeViewModel.selectedMovieIndexCallBack?(indexPath.row)
+
         
-        homeViewModel.openSelectedMovie(at: indexPath.row) { movieData in
-            print(movieData)
-            let selectedVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectedMovieViewController") as? SelectedMovieViewController ?? UIViewController()
-//            selectedVC.
-            self.navigationController?.pushViewController(selectedVC, animated: true)
-        }
+        let selectedVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectedMovieViewController") as? SelectedMovieViewController
+        let model = self.homeViewModel.getMovieList()[indexPath.row]
+        print(model)
+        selectedVC?.configureView(data:model)
+        self.navigationController?.pushViewController(selectedVC!, animated: true)
         
+//        homeViewModel.selectedMovieIndexCallBack?(indexPath.row)
+//        homeViewModel.openSelectedMovie(at: indexPath.row) { movieData in
+//            print(movieData)
+//            let selectedVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectedMovieViewController") as? SelectedMovieViewController
+//            let model = self.homeViewModel.getMovieList()[indexPath.row]
+//            selectedVC?.configureView(data:model)
+//            self.navigationController?.pushViewController(selectedVC!, animated: true)           
+//        }
         
     }
     

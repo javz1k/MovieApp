@@ -221,10 +221,6 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="Mzp-xo-AZv" firstAttribute="centerX" secondItem="1Vh-uD-0bs" secondAttribute="centerX" id="QnW-qb-Khy"/>
-                                                    <constraint firstItem="Mzp-xo-AZv" firstAttribute="centerY" secondItem="1Vh-uD-0bs" secondAttribute="centerY" id="TV7-aw-22e"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
