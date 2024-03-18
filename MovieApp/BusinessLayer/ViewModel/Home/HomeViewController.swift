@@ -32,7 +32,9 @@ class HomeViewController: UIViewController {
         collectionView.registerNib(with: "MovieCell")
         
         collectionView.register(UINib(nibName: "MovieCollectionHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:"MovieCollectionHeader")
+        homeViewModel.getMovieForType(type: .Popular)
         }
+    
     
     private var showLoading: Bool = false {
         didSet {

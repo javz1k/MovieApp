@@ -55,9 +55,9 @@ class NetworkManager {
                 }
             }
             
-            DispatchQueue.global(qos: .background).async {
+          
                 dataTask.resume()
-            }
+            
         }
     
     func cancelTaskWithUrl() {
