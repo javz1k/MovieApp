@@ -17,6 +17,7 @@ final class HomeViewModel{
     var movieList:[MovieCellProtocol] = []
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
+    var showLoading:((Bool) -> Void)?
     var selectedMovieIndexCallBack:((Int)->Void)?
     
     func getMovieForType(type: SegmentType){
@@ -78,8 +79,10 @@ final class HomeViewModel{
     
     // MARK: Network
     fileprivate func getPopularMovieListRequest(){
+        showLoading?(true)
         MovieManager.shared.getPopularMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
+            self.showLoading?(false)
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
             }else if let responseData = responseData{
@@ -91,8 +94,10 @@ final class HomeViewModel{
     }
     
     fileprivate func getTopRatedMovieListRequest(){
+        showLoading?(true)
         MovieManager.shared.getTopRatedMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
+            self.showLoading?(false)
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
                 print(errorString)
@@ -106,8 +111,10 @@ final class HomeViewModel{
     }
     
     fileprivate func getTodayMovieListRequest(){
+        showLoading?(true)
         MovieManager.shared.getTodayMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
+            self.showLoading?(false)
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
                 print(errorString)
@@ -121,8 +128,10 @@ final class HomeViewModel{
     }
     
     fileprivate func getWeekMovieListRequest(){
+        showLoading?(true)
         MovieManager.shared.getWeekMovieList(pageID: 3) { [weak self] responseData, errorString in
             guard let self = self else {return}
+            self.showLoading?(false)
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
                 print(errorString)
@@ -136,9 +145,11 @@ final class HomeViewModel{
     }
     
     func getSearchMovieListRequest(text: String){
-        
+        showLoading?(true)
+
         SearchManager.shared.getSearchMovieList(movieName: text) { [weak self] responseData, errorString in
             guard let self = self else {return}
+            self.showLoading?(false)
             if let errorString = errorString {
                 self.errorCallBack?(errorString)
                 print(errorString)

@@ -38,9 +38,10 @@ class HomeViewController: UIViewController {
     
     private var showLoading: Bool = false {
         didSet {
-            DispatchQueue.main.async{
+            DispatchQueue.main.async {
                 self.showLoading ? self.indicator.startAnimating() : self.indicator.stopAnimating()
-            }
+                self.indicator.isHidden = !self.showLoading
+        }
         }
     }
     
@@ -84,7 +85,12 @@ class HomeViewController: UIViewController {
         }
         
         homeViewModel.errorCallBack = { [weak self] error in
-            guard self != nil else {return}
+            guard let self = self else {return}
+        }
+        
+        homeViewModel.showLoading = { [weak self] isShow in
+            guard let self = self else {return}
+            self.showLoading = isShow
         }
     }
     

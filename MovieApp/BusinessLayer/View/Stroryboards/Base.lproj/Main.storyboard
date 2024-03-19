@@ -182,8 +182,16 @@
                                             <constraint firstAttribute="height" constant="420" id="aCY-U0-axF"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABY-EV-1t9">
+                                        <rect key="frame" x="159" y="444" width="75" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="newBtnAction:" destination="W7J-yw-zmB" eventType="touchUpInside" id="Ecn-te-b1P"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ekA-4u-RNf">
-                                        <rect key="frame" x="24" y="444" width="345" height="315"/>
+                                        <rect key="frame" x="24" y="502.33333333333337" width="345" height="256.66666666666663"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="L21-jl-paS">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="52"/>
@@ -203,7 +211,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Vh-uD-0bs">
-                                                <rect key="frame" x="0.0" y="76" width="345" height="239"/>
+                                                <rect key="frame" x="0.0" y="75.999999999999986" width="345" height="180.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzp-xo-AZv">
                                                         <rect key="frame" x="0.0" y="0.0" width="345" height="19.333333333333332"/>
@@ -212,7 +220,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-89-qXx">
-                                                        <rect key="frame" x="0.0" y="27.333333333333357" width="345" height="211.66666666666663"/>
+                                                        <rect key="frame" x="0.0" y="27.333333333333258" width="345" height="153.33333333333337"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -243,6 +251,7 @@
                     <connections>
                         <outlet property="aboutTextView" destination="PNv-89-qXx" id="8eD-AN-Xmr"/>
                         <outlet property="movieNameLabel" destination="321-v8-e3R" id="XPp-e6-eda"/>
+                        <outlet property="newbtn" destination="ABY-EV-1t9" id="OV9-7G-nUU"/>
                         <outlet property="overviewLabel" destination="Mzp-xo-AZv" id="z9d-PJ-NKa"/>
                         <outlet property="posterImageView" destination="osm-iJ-rFM" id="jBc-4k-HEz"/>
                         <outlet property="releaseDateLabel" destination="1vK-Oy-a8c" id="Hv9-AR-WzV"/>
@@ -251,6 +260,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rC-Ww-5h2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="833" y="1475"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="r0O-Mg-mqY">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dqM-r8-0IL" customClass="WebViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bbz-gJ-Dg1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvt-Me-U7v">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fw8-Uw-zhr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fw8-Uw-zhr" firstAttribute="bottom" secondItem="dvt-Me-U7v" secondAttribute="bottom" id="S3T-be-1ZZ"/>
+                            <constraint firstItem="dvt-Me-U7v" firstAttribute="top" secondItem="Fw8-Uw-zhr" secondAttribute="top" id="ewU-Wf-uHl"/>
+                            <constraint firstItem="dvt-Me-U7v" firstAttribute="leading" secondItem="Fw8-Uw-zhr" secondAttribute="leading" id="py5-bO-D1P"/>
+                            <constraint firstItem="Fw8-Uw-zhr" firstAttribute="trailing" secondItem="dvt-Me-U7v" secondAttribute="trailing" id="wbC-3y-SQi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="dvt-Me-U7v" id="H4L-Gg-XLy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZBe-5S-K0G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="836" y="2184"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="dR0-vE-yEe">
