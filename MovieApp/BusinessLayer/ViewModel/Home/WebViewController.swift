@@ -12,7 +12,7 @@ class WebViewController: UIViewController {
     var movie:MovieCellProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.load(URLRequest(url:URL(string:"https://www.youtube.com/results?search_query=\(movie?.titleString ?? "title string error webView")+trailer")!))
+        webView.load(URLRequest(url:URL(string:"https://www.youtube.com/results?search_query=\(movie?.titleString ?? "title string error webView")+movie+trailer")!))
         
     }
 

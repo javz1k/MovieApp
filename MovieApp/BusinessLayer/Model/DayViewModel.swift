@@ -26,6 +26,9 @@ struct DayViewModel: Codable {
 
 // MARK: - Result
 struct DayRes: Codable, MovieCellProtocol{
+    var movieID: Int{
+        id ?? 0
+    }
     var aboutString: String{
         overview ?? "Overview error"
     }

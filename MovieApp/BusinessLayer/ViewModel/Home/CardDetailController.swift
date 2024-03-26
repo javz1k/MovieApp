@@ -1,5 +1,5 @@
 //
-//  SelectedMovieViewController.swift
+//  CardDetailController.swift
 //  MovieApp
 //
 //  Created by Cavidan Mustafayev on 18.03.24.
@@ -9,48 +9,65 @@ import UIKit
 class CardDetailController: UIViewController {
     var movie: MovieCellProtocol?
     @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var aboutTextView: UITextView!
+    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var aboutLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieNameLabel: UILabel!
-    @IBOutlet weak var newbtn:UIButton!
+//    @IBOutlet weak var newbtn:UIButton!
+//    @IBOutlet weak var favoriteButtonTest: UIButton!
     
-    @IBAction func newBtnAction(_ sender: Any) {
-        print("buttonTapped")
-        let vc = UIStoryboard.init(name:"Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.movie = movie
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    lazy var trailerButton:UIButton = {
-        let trailerButton = UIButton(type: .custom)
-        trailerButton.setTitle("Play trailer", for: .normal)
-        trailerButton.layer.borderWidth = 1
-        trailerButton.layer.borderColor = UIColor.white.cgColor
-        trailerButton.layer.cornerRadius = 5
-        trailerButton.setTitleColor(.white, for: .normal)
-        trailerButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        trailerButton.addTarget(self, action: #selector(trailerButtonTapped), for: .touchUpInside)
-        trailerButton.frame = CGRect(x: 30, y: 350, width: 200, height: 46)
-        return trailerButton
+    var movieID:Int = 0
+    
+//    @IBAction func favoriteButtonAction(_ sender: Any) {
+//        print(#function)
+//    }
+//    @IBAction func newBtnAction(_ sender: Any) {
+//        print("buttonTapped")
+//        let vc = UIStoryboard.init(name:"Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+//        vc.movie = movie
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+    
+    private lazy var trailerButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Play trailer", for: .normal)
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = UIColor.white.cgColor
+        btn.layer.cornerRadius = 8
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = .color35CEE3
+        btn.addTarget(self, action: #selector(trailerButtonTapped), for: .touchUpInside)
+        btn.anchorSize(.init(width: 0, height: 48))
+        return btn
+    }()
+    
+    private lazy var favoriteButton:UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(systemName: "heart"), for: .normal)
+        btn.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        btn.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        btn.anchorSize(.init(width: 48, height: 48))
+        return btn
     }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
-        posterImageView.addSubview(trailerButton)
+        setupView()
     }
     
-    func configureView(){
+    fileprivate func configureView(){
         guard let movie = movie else {return}
         print("CONFIGURE //////////////",movie)
+        movieID = movie.movieID
         movieNameLabel.text = movie.titleString
         posterImageView.loadURL(movie.iconString)
-        aboutTextView.text = movie.aboutString
+        aboutLabel.text = movie.aboutString
         
         let dateString = movie.subTitleString
         let inputFormatter = DateFormatter()
@@ -67,11 +84,31 @@ class CardDetailController: UIViewController {
         }
     }
     
-    @objc func trailerButtonTapped(){
-        print("buttonTapped")
+    fileprivate func setupView() {
+        bgView.addSubview(trailerButton)
+        bgView.addSubview(favoriteButton)
+        trailerButton.anchor(
+            leading: bgView.leadingAnchor,
+            bottom: bgView.bottomAnchor,
+            trailing: bgView.trailingAnchor,
+            padding: .init(top: 0, left: 24, bottom: -24, right: -24))
+        
+        favoriteButton.anchor(
+            top: bgView.topAnchor,
+            trailing: bgView.trailingAnchor,
+            padding: .init(top: 48, left: 0, bottom: 0, right: -24))
+        configureView()
+    }
+    
+    @objc func trailerButtonTapped(_ sender: UIButton){
+        print("trailerButtonTapped")
         let vc = UIStoryboard.init(name:"Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
         vc.movie = movie
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func favoriteButtonTapped(_ sender: UIButton){
+        print("favoriteButtonTapped")
     }
    
 

@@ -115,7 +115,7 @@ class HomeViewController: UIViewController {
     }
 
     fileprivate func showDetailController(model: MovieCellProtocol) {
-        let controller = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectedMovieViewController") as! CardDetailController
+        let controller = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CardDetailController") as! CardDetailController
         controller.movie = model
         navigationController?.pushViewController(controller, animated: true)
                 

@@ -26,6 +26,9 @@ struct TopRatedViewModel: Codable {
 
 // MARK: - Result
 struct TopRatedResult: Codable, MovieCellProtocol {
+    var movieID: Int{
+        id ?? 0
+    }
     var aboutString: String{
         overview ?? "Overview error"
     }
