@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SDWebImage
+
 extension UICollectionView {
 func registerNib(with identifier: String)
 {

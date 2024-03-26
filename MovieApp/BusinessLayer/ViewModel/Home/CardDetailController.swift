@@ -48,6 +48,19 @@ class CardDetailController: UIViewController {
         btn.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         btn.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         btn.anchorSize(.init(width: 48, height: 48))
+        btn.backgroundColor = .colorF2F2F2
+        btn.layer.cornerRadius = 16
+        return btn
+    }()
+    
+    private lazy var backButton:UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        btn.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        btn.anchorSize(.init(width: 48, height: 48))
+        btn.backgroundColor = .colorF2F2F2
+        btn.layer.cornerRadius = 16
+        
         return btn
     }()
     
@@ -87,6 +100,12 @@ class CardDetailController: UIViewController {
     fileprivate func setupView() {
         bgView.addSubview(trailerButton)
         bgView.addSubview(favoriteButton)
+        bgView.addSubview(backButton)
+        
+        bgView.clipsToBounds = true
+        bgView.layer.cornerRadius = 16
+        bgView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
         trailerButton.anchor(
             leading: bgView.leadingAnchor,
             bottom: bgView.bottomAnchor,
@@ -97,6 +116,12 @@ class CardDetailController: UIViewController {
             top: bgView.topAnchor,
             trailing: bgView.trailingAnchor,
             padding: .init(top: 48, left: 0, bottom: 0, right: -24))
+        
+        backButton.anchor(
+            top: bgView.topAnchor,
+            leading: bgView.leadingAnchor,
+            padding: .init(top: 48, left: 24, bottom: 0, right: 0)
+            )
         configureView()
     }
     
@@ -110,6 +135,10 @@ class CardDetailController: UIViewController {
     @objc func favoriteButtonTapped(_ sender: UIButton){
         print("favoriteButtonTapped")
     }
-   
+    @objc func backButtonTapped(_ sender: UIButton){
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
+    }
 
 }

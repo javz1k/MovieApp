@@ -30,7 +30,7 @@ struct MovieResult: Codable, MovieCellProtocol {
     }
     
     var titleString: String {
-        originalTitle ?? "title error"
+        originalTitle?.replacingOccurrences(of: " ", with: "-") ?? "title error"
     }
     
     var subTitleString: String {
