@@ -142,6 +142,7 @@ final class HomeViewModel{
                 print(responseData)
             }
         }
+
     }
     
     func getSearchMovieListRequest(text: String){

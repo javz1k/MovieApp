@@ -6,7 +6,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,10 +31,32 @@
                     <view key="view" contentMode="scaleToFill" id="GAI-lY-2mw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RQT-6d-R9W">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N0a-EK-af8">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="BSF-sD-ZeQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <constraints>
+                            <constraint firstItem="RQT-6d-R9W" firstAttribute="leading" secondItem="GAI-lY-2mw" secondAttribute="leading" id="LNK-Rl-Dqu"/>
+                            <constraint firstItem="BSF-sD-ZeQ" firstAttribute="bottom" secondItem="RQT-6d-R9W" secondAttribute="bottom" id="S2O-BF-4Tr"/>
+                            <constraint firstItem="RQT-6d-R9W" firstAttribute="top" secondItem="GAI-lY-2mw" secondAttribute="top" id="p2U-5f-M0g"/>
+                            <constraint firstItem="BSF-sD-ZeQ" firstAttribute="trailing" secondItem="RQT-6d-R9W" secondAttribute="trailing" id="wFH-cH-fJn"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="More" image="ellipsis.circle.fill" catalog="system" id="9fH-st-Y9g"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="star.fill" catalog="system" id="9fH-st-Y9g"/>
+                    <connections>
+                        <outlet property="favoriteCollectionView" destination="RQT-6d-R9W" id="udx-bQ-JRE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E82-wK-g5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,16 +79,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="2RI-OZ-RQ8" customClass="MovieCollectionCell" customModule="MovieApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LdX-WZ-de5">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfN-JO-LGM">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="119"/>
@@ -338,9 +350,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="OSC-MG-3lQ"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorite" image="star.fill" catalog="system" id="pQU-NN-hNH"/>
+                    <tabBarItem key="tabBarItem" title="More" image="ellipsis" catalog="system" id="pQU-NN-hNH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTe-0x-9GB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -349,7 +361,7 @@
     </scenes>
     <resources>
         <image name="HarleyMallboro" width="520" height="706"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
@@ -365,8 +377,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

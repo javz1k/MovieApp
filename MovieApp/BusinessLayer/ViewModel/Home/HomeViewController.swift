@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     private var homeViewModel = HomeViewModel()
     fileprivate var searchBarIsHidden: Bool = true
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)

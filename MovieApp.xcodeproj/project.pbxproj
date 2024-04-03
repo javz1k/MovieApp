@@ -30,6 +30,8 @@
 		A42978B32B97B727008E2A57 /* TopRatedMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42978B22B97B727008E2A57 /* TopRatedMovieModel.swift */; };
 		A431216C2BA78AA000F97770 /* CardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A431216B2BA78AA000F97770 /* CardDetailController.swift */; };
 		A44857832BB2C0B1004CA09E /* Layout_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44857822BB2C0B1004CA09E /* Layout_Extension.swift */; };
+		A44857852BB6FC12004CA09E /* CoreSuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44857842BB6FC12004CA09E /* CoreSuccessModel.swift */; };
+		A44857872BBB0374004CA09E /* FavoriteGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44857862BBB0374004CA09E /* FavoriteGetModel.swift */; };
 		A46D32EB2B9F5080003ADA93 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A46D32EA2B9F5080003ADA93 /* SDWebImage */; };
 		A46D32ED2B9F5080003ADA93 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A46D32EC2B9F5080003ADA93 /* SDWebImageMapKit */; };
 		A46D32F02BA4E8BD003ADA93 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D32EF2BA4E8BD003ADA93 /* SearchHelper.swift */; };
@@ -86,6 +88,8 @@
 		A42978B22B97B727008E2A57 /* TopRatedMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedMovieModel.swift; sourceTree = "<group>"; };
 		A431216B2BA78AA000F97770 /* CardDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailController.swift; sourceTree = "<group>"; };
 		A44857822BB2C0B1004CA09E /* Layout_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout_Extension.swift; sourceTree = "<group>"; };
+		A44857842BB6FC12004CA09E /* CoreSuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreSuccessModel.swift; sourceTree = "<group>"; };
+		A44857862BBB0374004CA09E /* FavoriteGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGetModel.swift; sourceTree = "<group>"; };
 		A46D32EF2BA4E8BD003ADA93 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
 		A46D32F12BA4E8CB003ADA93 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		A46D32F32BA4EA68003ADA93 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -204,8 +208,10 @@
 				A4F55BB92B90AB4A00CFD4C8 /* PopularMovieModel.swift */,
 				A42978AE2B97B048008E2A57 /* DayViewModel.swift */,
 				A46D32F32BA4EA68003ADA93 /* SearchViewModel.swift */,
+				A44857842BB6FC12004CA09E /* CoreSuccessModel.swift */,
 				A42978B22B97B727008E2A57 /* TopRatedMovieModel.swift */,
 				A42978B02B97B534008E2A57 /* WeekViewModel.swift */,
+				A44857862BBB0374004CA09E /* FavoriteGetModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -481,12 +487,14 @@
 				A4773A7C2B8F690100310F6D /* TabBarViewController.swift in Sources */,
 				A4773A992B8F7D6400310F6D /* NetworkHelper.swift in Sources */,
 				A4773A882B8F735F00310F6D /* FavoriteViewController.swift in Sources */,
+				A44857852BB6FC12004CA09E /* CoreSuccessModel.swift in Sources */,
 				A4F55BBA2B90AB4A00CFD4C8 /* PopularMovieModel.swift in Sources */,
 				A431216C2BA78AA000F97770 /* CardDetailController.swift in Sources */,
 				A4773A8F2B8F73A500310F6D /* MoreViewController.swift in Sources */,
 				A4F55BCE2B9232A000CFD4C8 /* MovieCollectionHeader.swift in Sources */,
 				A4773A6C2B8F673F00310F6D /* ViewController.swift in Sources */,
 				A46D32F02BA4E8BD003ADA93 /* SearchHelper.swift in Sources */,
+				A44857872BBB0374004CA09E /* FavoriteGetModel.swift in Sources */,
 				A4773A682B8F673F00310F6D /* AppDelegate.swift in Sources */,
 				A4773A8A2B8F736F00310F6D /* FavoriteViewModel.swift in Sources */,
 				A42978AF2B97B048008E2A57 /* DayViewModel.swift in Sources */,

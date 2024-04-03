@@ -18,6 +18,7 @@ class CardDetailController: UIViewController {
 //    @IBOutlet weak var favoriteButtonTest: UIButton!
     
     var movieID:Int = 0
+    var movieIdCallBack:((Int?)->Void)?
     
 //    @IBAction func favoriteButtonAction(_ sender: Any) {
 //        print(#function)
@@ -77,6 +78,7 @@ class CardDetailController: UIViewController {
     fileprivate func configureView(){
         guard let movie = movie else {return}
         print("CONFIGURE //////////////",movie)
+        movieIdCallBack?(movie.movieID)
         movieID = movie.movieID
         movieNameLabel.text = movie.titleString
         posterImageView.loadURL(movie.iconString)
