@@ -54,10 +54,7 @@ class NetworkManager {
                     completion(.failure(.unknownError))
                 }
             }
-            
-          
                 dataTask.resume()
-            
         }
     
     func cancelTaskWithUrl() {

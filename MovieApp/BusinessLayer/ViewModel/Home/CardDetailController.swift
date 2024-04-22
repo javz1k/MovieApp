@@ -7,28 +7,17 @@
 
 import UIKit
 class CardDetailController: UIViewController {
-    var movie: MovieCellProtocol?
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var aboutLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieNameLabel: UILabel!
-//    @IBOutlet weak var newbtn:UIButton!
-//    @IBOutlet weak var favoriteButtonTest: UIButton!
-    
+
     var movieID:Int = 0
-    var movieIdCallBack:((Int?)->Void)?
+    var viewModel: HomeViewModel!
     
-//    @IBAction func favoriteButtonAction(_ sender: Any) {
-//        print(#function)
-//    }
-//    @IBAction func newBtnAction(_ sender: Any) {
-//        print("buttonTapped")
-//        let vc = UIStoryboard.init(name:"Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-//        vc.movie = movie
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
+
     
     private lazy var trailerButton: UIButton = {
         let btn = UIButton()
@@ -75,11 +64,19 @@ class CardDetailController: UIViewController {
         setupView()
     }
     
+    fileprivate func configureViewModel() {
+        viewModel.favoriteSuccessCallBack = { [weak self] in
+            guard let self = self else {return}
+            self.configeFavView()
+        }
+        
+        viewModel.errorCallBack = { [weak self] error in
+            guard let self = self else {return}
+        }
+        
+    }
     fileprivate func configureView(){
-        guard let movie = movie else {return}
-        print("CONFIGURE //////////////",movie)
-        movieIdCallBack?(movie.movieID)
-        movieID = movie.movieID
+        guard let movie = viewModel.selectedMovie else {return}
         movieNameLabel.text = movie.titleString
         posterImageView.loadURL(movie.iconString)
         aboutLabel.text = movie.aboutString
@@ -127,14 +124,21 @@ class CardDetailController: UIViewController {
         configureView()
     }
     
+    fileprivate func configeFavView() {
+        DispatchQueue.main.async {
+            self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
+        
+    }
     @objc func trailerButtonTapped(_ sender: UIButton){
         print("trailerButtonTapped")
         let vc = UIStoryboard.init(name:"Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.movie = movie
+        vc.movie = viewModel.selectedMovie
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func favoriteButtonTapped(_ sender: UIButton){
+        viewModel.postFavoriteRequest()
         print("favoriteButtonTapped")
     }
     @objc func backButtonTapped(_ sender: UIButton){

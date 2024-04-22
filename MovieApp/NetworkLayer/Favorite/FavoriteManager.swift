@@ -15,7 +15,6 @@ class FavoriteManager {
     
     func postFavorite(body: [String: Any], complete: @escaping((CoreSuccessModel?, String?) -> Void)) {
        
-        
         let url = "https://api.themoviedb.org/3/account/\(accountID)/favorite"
         NetworkManager.shared.request(
             type: CoreSuccessModel.self,

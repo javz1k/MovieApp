@@ -15,10 +15,11 @@ final class HomeViewModel{
     private var weekModel: WeekViewModel?
     private var searchModel: SearchViewModel?
     var movieList:[MovieCellProtocol] = []
+    var selectedMovie: MovieCellProtocol?
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
+    var favoriteSuccessCallBack:(() -> Void)?
     var showLoading:((Bool) -> Void)?
-    var selectedMovieIndexCallBack:((Int)->Void)?
     
     func getMovieForType(type: SegmentType){
         switch type{
@@ -163,6 +164,27 @@ final class HomeViewModel{
         }
     }
     
-    
+    func postFavoriteRequest(){
+       
+       let body: [String: Any] = [
+           "media_type": "movie",
+           "media_id": selectedMovie?.movieID ?? "",
+           "favorite": true
+       ]
+       
+       FavoriteManager.shared.postFavorite(body: body) { [weak self] responseData, errorString in
+           guard let self = self else {return}
+           if let errorString = errorString {
+               self.errorCallBack?(errorString)
+               print(errorString)
+               
+           }else if let responseData = responseData{
+               print(responseData)
+               favoriteSuccessCallBack?()
+           }
+       }
+       
+   }
+   
     
 }

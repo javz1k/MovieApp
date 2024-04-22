@@ -29,6 +29,9 @@
 		A42978B12B97B534008E2A57 /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42978B02B97B534008E2A57 /* WeekViewModel.swift */; };
 		A42978B32B97B727008E2A57 /* TopRatedMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42978B22B97B727008E2A57 /* TopRatedMovieModel.swift */; };
 		A431216C2BA78AA000F97770 /* CardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A431216B2BA78AA000F97770 /* CardDetailController.swift */; };
+		A43B11E52BD17A5F00C5ED93 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B11E32BD17A5F00C5ED93 /* FavoriteCollectionViewCell.swift */; };
+		A43B11E62BD17A5F00C5ED93 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43B11E42BD17A5F00C5ED93 /* FavoriteCollectionViewCell.xib */; };
+		A43B11E92BD18A6800C5ED93 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = A43B11E82BD18A6800C5ED93 /* SwipeCellKit */; };
 		A44857832BB2C0B1004CA09E /* Layout_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44857822BB2C0B1004CA09E /* Layout_Extension.swift */; };
 		A44857852BB6FC12004CA09E /* CoreSuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44857842BB6FC12004CA09E /* CoreSuccessModel.swift */; };
 		A44857872BBB0374004CA09E /* FavoriteGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44857862BBB0374004CA09E /* FavoriteGetModel.swift */; };
@@ -87,6 +90,8 @@
 		A42978B02B97B534008E2A57 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		A42978B22B97B727008E2A57 /* TopRatedMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedMovieModel.swift; sourceTree = "<group>"; };
 		A431216B2BA78AA000F97770 /* CardDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailController.swift; sourceTree = "<group>"; };
+		A43B11E32BD17A5F00C5ED93 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		A43B11E42BD17A5F00C5ED93 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		A44857822BB2C0B1004CA09E /* Layout_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout_Extension.swift; sourceTree = "<group>"; };
 		A44857842BB6FC12004CA09E /* CoreSuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreSuccessModel.swift; sourceTree = "<group>"; };
 		A44857862BBB0374004CA09E /* FavoriteGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGetModel.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A46D32ED2B9F5080003ADA93 /* SDWebImageMapKit in Frameworks */,
+				A43B11E92BD18A6800C5ED93 /* SwipeCellKit in Frameworks */,
 				A46D32EB2B9F5080003ADA93 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +164,15 @@
 				A4124A1A2B9CA799008FEF06 /* Montserrat-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A43B11E22BD17A3700C5ED93 /* FavoriteCell */ = {
+			isa = PBXGroup;
+			children = (
+				A43B11E32BD17A5F00C5ED93 /* FavoriteCollectionViewCell.swift */,
+				A43B11E42BD17A5F00C5ED93 /* FavoriteCollectionViewCell.xib */,
+			);
+			path = FavoriteCell;
 			sourceTree = "<group>";
 		};
 		A46D32EE2BA4E881003ADA93 /* Search */ = {
@@ -313,6 +328,7 @@
 		A4F55BBB2B90E7C500CFD4C8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A43B11E22BD17A3700C5ED93 /* FavoriteCell */,
 				A4F55BCB2B92328300CFD4C8 /* Headers */,
 				A4F55BC22B920B0A00CFD4C8 /* MovieCell */,
 			);
@@ -391,6 +407,7 @@
 			packageProductDependencies = (
 				A46D32EA2B9F5080003ADA93 /* SDWebImage */,
 				A46D32EC2B9F5080003ADA93 /* SDWebImageMapKit */,
+				A43B11E82BD18A6800C5ED93 /* SwipeCellKit */,
 			);
 			productName = MovieApp;
 			productReference = A4773A642B8F673F00310F6D /* MovieApp.app */;
@@ -422,6 +439,7 @@
 			mainGroup = A4773A5B2B8F673F00310F6D;
 			packageReferences = (
 				A46D32E92B9F5080003ADA93 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				A43B11E72BD18A6800C5ED93 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = A4773A652B8F673F00310F6D /* Products */;
 			projectDirPath = "";
@@ -459,6 +477,7 @@
 				A4124A2B2B9CA799008FEF06 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				A4773A6F2B8F673F00310F6D /* Main.storyboard in Resources */,
 				A4F55BC62B920B2300CFD4C8 /* MovieCell.xib in Resources */,
+				A43B11E62BD17A5F00C5ED93 /* FavoriteCollectionViewCell.xib in Resources */,
 				A4124A2D2B9CA799008FEF06 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +517,7 @@
 				A4773A682B8F673F00310F6D /* AppDelegate.swift in Sources */,
 				A4773A8A2B8F736F00310F6D /* FavoriteViewModel.swift in Sources */,
 				A42978AF2B97B048008E2A57 /* DayViewModel.swift in Sources */,
+				A43B11E52BD17A5F00C5ED93 /* FavoriteCollectionViewCell.swift in Sources */,
 				A4773A6A2B8F673F00310F6D /* SceneDelegate.swift in Sources */,
 				A44857832BB2C0B1004CA09E /* Layout_Extension.swift in Sources */,
 			);
@@ -724,6 +744,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A43B11E72BD18A6800C5ED93 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 		A46D32E92B9F5080003ADA93 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -735,6 +763,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A43B11E82BD18A6800C5ED93 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43B11E72BD18A6800C5ED93 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
 		A46D32EA2B9F5080003ADA93 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A46D32E92B9F5080003ADA93 /* XCRemoteSwiftPackageReference "SDWebImage" */;

@@ -7,12 +7,11 @@
 
 import Foundation
 
-final class FavoriteViewModel{
+final class FavoriteViewModel {
     var movieID:Int = 0
     var cardDetailControler = CardDetailController()
     var movieList:[MovieCellProtocol] = []
-    var favoriteGetModel:FavoriteGetModel?
-    
+    var favoriteGetModel: FavoriteGetModel?
     var successCallBack:(() -> Void)?
     var errorCallBack:((String) -> Void)?
     
@@ -35,16 +34,11 @@ final class FavoriteViewModel{
 
     
     
-    fileprivate func postFavoriteRequest(){
-        //        showLoading?(true)
-        cardDetailControler.movieIdCallBack = { [weak self] data in
-            guard let data = data else {return}
-            self?.movieID = data
-        }
+     func postFavoriteRequest(){
         
         let body: [String: Any] = [
             "media_type": "movie",
-            "media_id": movieID,
+            "media_id": "",
             "favorite": true
         ]
         
@@ -54,7 +48,6 @@ final class FavoriteViewModel{
                 print(errorString)
             }else if let responseData = responseData{
                 print(responseData)
-                //reload data
             }
         }
         

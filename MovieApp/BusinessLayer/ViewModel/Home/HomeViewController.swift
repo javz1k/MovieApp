@@ -115,10 +115,10 @@ class HomeViewController: UIViewController {
         print("segmentaction",type)
     }
 
-    fileprivate func showDetailController(model: MovieCellProtocol) {
+    fileprivate func showDetailController() {
         let controller = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CardDetailController") as! CardDetailController
-        controller.movie = model
         navigationController?.pushViewController(controller, animated: true)
+        controller.viewModel = homeViewModel
                 
     }
 }
@@ -145,9 +145,9 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movie = homeViewModel.movieList[indexPath.row]
+        homeViewModel.selectedMovie = homeViewModel.movieList[indexPath.row]
         if homeViewModel.movieList.indices.contains(indexPath.row) {
-            showDetailController(model: movie)
+            showDetailController()
         } else {
             print("Out of range")
         }
